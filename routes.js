@@ -18,6 +18,11 @@ var upload = multer({storage: storage});
         res.render('index.ejs');
     });
 
+    // show the about page
+    app.get('/about', function(req, res) {
+        res.render('about.ejs');
+    });
+
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
         db.collection('posts').find({postedBy: req.user._id}).toArray((err, result) => {
